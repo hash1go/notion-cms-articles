@@ -1,0 +1,280 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------
+   Base typography styles 
+   ------------------------------------------ */
+h1 {
+  @apply font-semibold leading-tight text-4xl mt-0 mb-2 text-gray-800;
+}
+h2 {
+  @apply font-semibold leading-tight text-3xl mt-0 mb-2 text-gray-800;
+}
+h3 {
+  @apply font-semibold leading-tight text-2xl mt-0 mb-2 text-gray-800;
+}
+p {
+  @apply font-normal leading-relaxed text-base text-gray-800 mt-0 mb-4;
+}
+main {
+  @apply min-h-screen flex flex-col justify-center items-center;
+}
+
+/* ------------------------------------------
+   Notion blocks styling
+   ------------------------------------------ */
+/* Headings */
+.nbr-block-h1 {
+  @apply font-semibold leading-tight text-4xl mt-10 mb-4;
+}
+.nbr-block-h2 {
+  @apply font-semibold leading-tight text-3xl mt-8 mb-3;
+}
+.nbr-block-h3 {
+  @apply font-semibold leading-tight text-2xl mt-6 mb-2;
+}
+
+/* Spacing between blocks */
+.nbr-blocks > div {
+  @apply mb-4;
+}
+
+/* Spacing after lists */
+ul + .nbr-block-h1,
+ul + .nbr-block-h2,
+ul + .nbr-block-h3,
+ul + .nbr-block-p,
+ol + .nbr-block-h1,
+ol + .nbr-block-h2,
+ol + .nbr-block-h3,
+ol + .nbr-block-p {
+  @apply mt-6;
+}
+
+/* Text formatting */
+.nbr-inline-code {
+  @apply text-pink-700 text-sm px-2 py-1 font-normal bg-gray-100 rounded break-words;
+}
+.nbr-caption {
+  @apply text-inherit opacity-70;
+}
+.nbr-link {
+  @apply text-inherit no-underline border-b border-solid border-gray-700 opacity-70 hover:opacity-100;
+}
+.nbr-bold {
+  @apply font-semibold;
+}
+
+/* Quote blocks */
+.nbr-block-quote {
+  @apply border-l-4 border-solid border-gray-700 px-4 py-2 bg-gray-50 my-4;
+}
+
+/* Code blocks */
+.nbr-block-code {
+  @apply text-sm my-4;
+}
+.nbr-block-code pre::-webkit-scrollbar {
+  display: none;
+}
+.nbr-block-code .syntax-highlighter-pre {
+  @apply rounded-lg shadow-sm;
+  padding: 1.25rem !important;
+}
+
+/* Callout blocks */
+.nbr-block-callout {
+  @apply bg-gray-100 pr-6 py-5 pl-4 rounded flex my-4 shadow-sm;
+}
+.nbr-block-callout .nbr-icon {
+  @apply min-w-min w-4 relative top-0.5;
+}
+.nbr-block-callout .nbr-callout {
+  @apply overflow-hidden w-full;
+  -webkit-margin-start: 8px;
+  margin-inline-start: 8px;
+}
+
+/* List styling */
+.nbr-block-ul {
+  @apply pl-4 list-disc;
+}
+.nbr-block-ol {
+  @apply pl-4 list-decimal;
+}
+.nbr-block-ul li,
+.nbr-block-ol li {
+  @apply mb-2 leading-relaxed;
+}
+.nbr-block-ul,
+.nbr-block-ol {
+  @apply mb-6;
+}
+
+/* Table of contents */
+.nbr-block-table_of_contents {
+  @apply p-5 list-disc bg-gray-100 rounded my-6;
+}
+.nbr-block-table_of_contents > div {
+  @apply my-1;
+}
+.nbr-block-table_of_contents a {
+  @apply underline text-gray-600 hover:text-gray-900;
+}
+
+/* ------------------------------------------
+   Media embedding styling
+   ------------------------------------------ */
+/* Video embeds */
+.nbr-video {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  @apply my-6;
+}
+.nbr-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  @apply rounded-lg;
+}
+
+/* Image blocks */
+.nbr-block-image {
+  @apply my-12;
+}
+.nbr-block-image img {
+  @apply mx-auto rounded-lg shadow-sm;
+}
+.nbr-block-image figcaption {
+  @apply text-center text-sm text-gray-500 mt-3;
+}
+
+/* ------------------------------------------
+   Math and KaTeX styling
+   ------------------------------------------ */
+/* Inline math formulas */
+.math-inline {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: baseline;
+  margin: 0 0.2em;
+}
+
+/* KaTeX font size adjustment */
+.katex {
+  font-size: 1.1em !important;
+}
+
+/* Block math formulas */
+.math-block {
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
+  overflow-x: auto;
+  @apply my-6;
+}
+
+/* Handling overflow for long KaTeX formulas */
+.katex-display {
+  overflow-x: clip;
+  overflow-y: hidden;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+
+/* ------------------------------------------
+   Navigation components
+   ------------------------------------------ */
+/* Breadcrumb styling */
+nav[aria-label="Breadcrumb"] {
+  @apply w-full overflow-x-auto pb-1;
+  scrollbar-width: none; /* Firefox */
+}
+
+nav[aria-label="Breadcrumb"]::-webkit-scrollbar {
+  @apply hidden; /* Chrome, Safari, Edge */
+}
+
+nav[aria-label="Breadcrumb"] ol {
+  @apply flex items-center whitespace-nowrap;
+}
+
+/* ------------------------------------------
+   Responsive adjustments
+   ------------------------------------------ */
+@media (max-width: 768px) {
+  nav[aria-label="Breadcrumb"] {
+    @apply w-full opacity-80;
+  }
+}
+
+@media (max-width: 640px) {
+  /* Typography adjustments for mobile */
+  .katex {
+    font-size: 1em !important;
+  }
+
+  .nbr-block-h1 {
+    @apply text-3xl mt-8 mb-3;
+  }
+
+  .nbr-block-h2 {
+    @apply text-2xl mt-6 mb-2;
+  }
+
+  .nbr-block-h3 {
+    @apply text-xl mt-4 mb-2;
+  }
+
+  /* Additional mobile optimizations */
+  .nbr-block-h1 h1 {
+    font-size: 1.75rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .nbr-block-h2 h2 {
+    font-size: 1.5rem;
+    margin-top: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .nbr-block-h3 h3 {
+    font-size: 1.25rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Code block padding for mobile */
+  .nbr-block-code .syntax-highlighter-pre {
+    padding: 0.75rem !important;
+    font-size: 14px !important;
+    overflow-x: auto;
+  }
+
+  /* Block spacing for mobile */
+  .nbr-block-quote {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  /* Article title and metadata adjustments */
+  .article-title {
+    font-size: 1.5rem;
+    line-height: 1.25;
+    margin: 1rem 0;
+  }
+
+  .article-meta {
+    font-size: 0.75rem;
+  }
+
+  /* Image spacing for mobile */
+  .nbr-block-image {
+    @apply my-8;
+  }
+}
