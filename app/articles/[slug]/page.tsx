@@ -7,8 +7,8 @@ import { getText, getCover, getDate } from "@/utils/property";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-export const dynamic = 'force-dynamic';
-// export const revalidate = 60;
+// export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export async function generateMetadata({
   params,
