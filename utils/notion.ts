@@ -43,7 +43,7 @@ export const fetchBlocksByPageId = unstable_cache(
     }
   },
   ["notion-blocks"],
-  { revalidate: 60 } // 60秒ごとに再検証
+  { revalidate: 60 }
 );
 const DATABASE_ID = process.env.NOTION_DATABASE_ID as string;
 
@@ -90,7 +90,6 @@ const sanitizePage = (page: any) => {
   };
 };
 
-// より効率的なキャッシュ戦略を持つApp Routerのデータフェッチング関数
 // App Routerのキャッシュを利用したページ取得関数
 export const fetchPages = unstable_cache(
   async ({ slug, tag }: { slug?: string; tag?: string }) => {
@@ -160,16 +159,8 @@ export const fetchPages = unstable_cache(
       throw new Error("Failed to fetch pages.");
     }
   },
-  // キャッシュキー設定を動的に
-  [
-    "notion-pages",
-    (args: { slug?: string; tag?: string }) => args.slug ?? "all",
-    (args: { slug?: string; tag?: string }) => args.tag ?? "none",
-  ]
-    .filter(Boolean)
-    .map((k) => (typeof k === "function" ? "dynamic-key" : k)),
+  ["notion-pages"],
   {
-    // 60秒ごとに再検証
-    revalidate: 60, // 1分ごとに再検証
+    revalidate: 60,
   }
 );

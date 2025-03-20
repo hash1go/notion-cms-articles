@@ -14,8 +14,7 @@ export const metadata: Metadata = {
   },
 };
 
-// 再生成間隔の設定（ISRと同等）
-export const revalidate = 60;
+export const dynamic = 'force-dynamic';
 
 export default async function HomePage() {
   const { results } = await fetchPages({});
