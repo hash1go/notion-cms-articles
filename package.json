@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@notionhq/client": "^1.0.4",
-    "katex": "^0.16.21",
+    "katex": "^0.16.22",
     "next": "^15.2.5",
     "notion-block-renderer": "^2.3.13",
     "react": "^18.3.1",
@@ -22,7 +22,7 @@
   "devDependencies": {
     "@types/katex": "^0.16.7",
     "@types/node": "^22",
-    "@types/react": "^19.1.0",
+    "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@types/react-katex": "^3.0.4",
     "autoprefixer": "^10.4.21",
